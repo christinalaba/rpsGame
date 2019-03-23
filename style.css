@@ -1,0 +1,247 @@
+/* font-family: 'Inconsolata', monospace; */
+/* font-family: 'Hind', sans-serif; */
+
+@font-face {
+  font-family: 'tropical';
+  src: url('./fonts/Tropical.ttf');
+}
+
+@font-face {
+  font-family: 'shady';
+  src: url('./fonts/Shady_Lane.ttf') format("ttf");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+body{
+    max-width: 1000px;
+    min-width: 300px;
+    margin: 0 auto;
+    color: darkslateblue;
+    background-image: url(./images/speckledWall.jpg);
+    background-size: cover;
+    font-family: 'tropical';
+}
+
+.wrapper{
+    width: 90%;
+    position: relative;
+    min-height:100%;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+h1{
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    font-size: 60px;
+    margin-top: 10vh;
+    letter-spacing: 5px;
+}
+
+.main{
+    max-width: 600px; 
+    /* width: 100%; */
+    margin: 0 auto;
+}
+
+
+/* SCOREBOARD */
+
+.scoreBoard{
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    padding: 10px;
+    margin: 5vh auto 0;
+    display: none;
+}
+
+.fateDisplay p, .playerDisplay p{
+    text-align: center;
+    margin:5px;
+}
+
+.vs{
+    clear: both;
+    text-align: center;
+}
+
+.display{
+    display: flex;
+   align-content: center;
+   justify-content: space-evenly;
+   font-size: 50px;
+}
+
+input:-internal-autofill-previewed, input:-internal-autofill-selected, textarea:-internal-autofill-previewed, textarea:-internal-autofill-selected, select:-internal-autofill-previewed, select:-internal-autofill-selected {
+    background-color: none !important;
+}
+
+/* GAME CONTROLS */
+.gameControls{
+    text-align: center;
+    position: absolute;
+    padding-top: 80px;
+    width: 100%;
+    background: #d8e4f1;
+    opacity: 0.95;
+    z-index: 1;
+    height: 100%;
+    background: no-repeat url('./images/paintStreak.png');
+    background-size:contain;
+    margin-top: 75px;
+}
+
+button {     
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    padding: 10px 0px;
+    border: none;
+    cursor:pointer;
+    width: calc(100px - 6.66px );  
+    font-size: 15px;   
+    color: darkslateblue;  
+}
+
+button:hover{
+    background-color: #fd81a5;
+    opacity:0.9;
+    transition: all 0.3s ease-out;
+}
+
+.selected{
+    background-color: #fe8fae;
+}
+
+/* GAME SCREEN */
+
+.hand{
+    width: 300px;
+    height: 300px;
+    float: left;
+}
+
+.gameScreen{
+    position: relative;
+    /* overflow: hidden; */
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 300px;
+    border-radius: 1px;
+}
+
+.animation{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+    top:30px;
+}
+
+#leftHand{
+    left: 0;
+    bottom: 0;
+    background: no-repeat url(images/left/LeftRockWin.png);
+    width: 300px;
+    height: 300px;
+}
+
+#rightHand{
+    right: 0;
+    bottom: 0;
+    background: no-repeat url(images/right/RightRockWin.png);
+    width: 300px;
+    height: 300px;
+}
+
+/* START MODAL */
+
+.input{
+    margin-bottom:7%;
+}
+
+#playerInputForm{
+    text-align: center;
+    padding: 10%;
+    font-size: 40px;
+}
+
+#nameInput, #fateInput{
+    border: none;
+    background-color: transparent;
+    color: black;
+    border-bottom: 3px dashed black;
+}
+
+#fateInput label{
+    line-height: 30px;
+
+}
+
+.playButton{
+    border-radius: 0px;
+    padding: 10px 20px;
+    border:none;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #fd81a5;
+    color: white;
+    font-weight: bold;
+}
+
+.playButton:hover{
+       background-color: darkslateblue;
+       transition: all 0.5s ease-out;
+}
+
+/* END MODAL */
+
+.hide{
+    display:none;
+    /* visibility: hidden; */
+}
+
+.gameOverModal{
+    text-align: center;
+    padding: 20px;
+    font-size: 38px;
+    width: 100%;
+}
+
+#messageBoard{
+    text-align: center;
+    color: red;
+    font-size: 22px;
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    top: 5%;
+}
+
+/* FOOTER */
+
+footer{
+    position: relative;
+    text-align: center;
+    width: 100%;
+    font-size: 15px;
+    padding-top: 10%;
+    letter-spacing: 1px;
+}
+
+footer a {
+    text-decoration: none;
+}

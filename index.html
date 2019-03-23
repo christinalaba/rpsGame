@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Play with Fate</title>
+    
+    <link rel='stylesheet' type='text/css' href='style.css'>
+    <link href="https://fonts.googleapis.com/css?family=Hind:700|Inconsolata:400,700" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 class="pageTitle">Need help deciding on a thing?<br>Pla math.random to decide.</h1>
+        
+            <div class="main">
+                <div class="scoreBoard">
+                    <div class="display">
+                        <div class="playerDisplay clearfix">
+                            <p class="playerName">Player</p>
+                            <p class="playerScore score">0</p>
+                        </div>
+                        <p class="vs">VS</p>
+                        <div class="fateDisplay clearfix">
+                            <p class="fateName">Fate</p>
+                            <p class="fateScore score">0</p>
+                        </div>
+                    </div>
+                </div><!-- ./scoreBoard -->
+                
+                <div class="gameScreen">
+                    <p id="messageBoard">Click to select</p>
+                    <div class="gameOverModal hide"></div>
+                    <div class="introModal">
+                        <form method="get" id="playerInputForm" autocomplete="off">
+                            <div class="nameInput input">
+                                <label for="name">Your name:</label>
+                                <input type="text" name="nameInput" id="nameInput" required>
+                            </div>
+                            <div class="fateInput input">
+                                <label for="email">What are you trying to decide?</br>Should I</label>
+                                <input type="text" name="fateInput" id="fateInput" required>
+                            </div>
+                            <div class="playerInput input">
+                                <input class="playButton" type="submit" value="LET'S PLAY!">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="gameControls">
+                        <button class="rockButton">Rock</button>
+                        <button class="paperButton">Paper</button>
+                        <button class="scissorsButton">Scissors</button>
+                    </div><!-- ./gameControls -->
+                    <div class="gameAnimation">
+                        <div class="animation" id="leftHand"></div>
+                        <div class="animation" id="rightHand" ></div>
+                    </div>
+                </div><!-- ./gameScreen -->
+            </div>
+
+        
+        <footer>
+            <p class="credit">Artwork by:<a href="http://davidgalletly.com/">David Galletly</a></p>    
+        </footer>
+
+    </div><!-- ./wrapper -->
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+
+</body>
+</html>
