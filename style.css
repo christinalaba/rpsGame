@@ -30,8 +30,11 @@ body{
     margin: 0 auto;
     color: darkslateblue;
     background-image: url(./images/speckledWall.jpg);
+    /* background-color: #d47337; */
+    /* background-color: #dc8271; */
+    /* background-color: #acd6bc; */
     background-size: cover;
-    font-family: 'tropical';
+    font-family: 'tropical', sans-serif;
 }
 
 .wrapper{
@@ -42,13 +45,17 @@ body{
     margin: 0 auto;
 }
 
+.math{
+    color: #fd81a5
+}
+
 h1{
     text-transform: uppercase;
     text-align: center;
     position: relative;
     font-size: 60px;
     margin-top: 10vh;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
 }
 
 .main{
@@ -93,7 +100,7 @@ input:-internal-autofill-previewed, input:-internal-autofill-selected, textarea:
 .gameControls{
     text-align: center;
     position: absolute;
-    padding-top: 80px;
+        padding-top: 12%;
     width: 100%;
     background: #d8e4f1;
     opacity: 0.95;
@@ -111,8 +118,9 @@ button {
     border: none;
     cursor:pointer;
     width: calc(100px - 6.66px );  
-    font-size: 15px;   
+    font-size: 18px;   
     color: darkslateblue;  
+    font-family: "helvetica", sans-serif;
 }
 
 button:hover{
@@ -170,7 +178,11 @@ button:hover{
 /* START MODAL */
 
 .input{
-    margin-bottom:7%;
+    margin:7% 0;
+    font-family: "helvetica", sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    color: black;
 }
 
 #playerInputForm{
@@ -182,8 +194,11 @@ button:hover{
 #nameInput, #fateInput{
     border: none;
     background-color: transparent;
-    color: black;
-    border-bottom: 3px dashed black;
+    background-color: transparent;
+    color: darkslateblue;
+    border-bottom: 3px dotted black;
+    font-size: 20px;
+    width: 150px;
 }
 
 #fateInput label{
@@ -194,17 +209,123 @@ button:hover{
 .playButton{
     border-radius: 0px;
     padding: 10px 20px;
-    border:none;
     text-transform: uppercase;
     cursor: pointer;
-    background-color: #fd81a5;
+    background-color: transparent;
     color: white;
+    background-color: darkslateblue;
     font-weight: bold;
+    letter-spacing: 0.8px;
+    font-size: 13PX;
+    border-radius: 5px;
+    border: 3px solid darkslateblue;
+    position: relative;
+    overflow: hidden;
+    width: 160px;
 }
 
 .playButton:hover{
-       background-color: darkslateblue;
-       transition: all 0.5s ease-out;
+       background-color: #fd81a5;
+        /* background-color: transparent; */
+       /* transition: all 0.5s ease-out; */
+       color: darkslateblue;
+}
+
+.playButton span {
+    -webkit-transition: 0.s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    -webkit-transition-delay: 0.2s;
+    -moz-transition-delay: 0.2s;
+    -o-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
+
+.playButton:before,
+.playButton:after {
+    content: '';
+    position: absolute;
+    top: 0.67em;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    -webkit-transition: .4s,opacity .6s;
+    -moz-transition: .4s,opacity .6s;
+    -o-transition: .4s,opacity .6s;
+    transition: .4s,opacity .6s;
+}
+
+/* :before */
+
+.playButton:before {
+    content: attr(data-hover);
+    -webkit-transform: translate(-150%,0);
+    -moz-transform: translate(-150%,0);
+    -ms-transform: translate(-150%,0);
+    -o-transform: translate(-150%,0);
+    transform: translate(-150%,0);
+    color: darkslateblue;
+}
+
+/* :after */
+
+.playButton:after {
+    content: attr(data-active);
+    -webkit-transform: translate(150%,0);
+    -moz-transform: translate(150%,0);
+    -ms-transform: translate(150%,0);
+    -o-transform: translate(150%,0);
+    transform: translate(150%,0);
+    /* color: darkslateblue; */
+}
+
+/* Span on :hover and :active */
+
+.playButton:hover span,
+.playButton:active span {
+    opacity: 0;
+    -webkit-transform: scale(0.3);
+    -moz-transform: scale(0.3);
+    -ms-transform: scale(0.3);
+    -o-transform: scale(0.3);
+    transform: scale(0.3);
+}
+
+/*  
+    We show :before pseudo-element on :hover 
+    and :after pseudo-element on :active 
+*/
+
+.playButton:hover:before,
+.playButton:active:after {
+    opacity: 1;
+    -webkit-transform: translate(0,0);
+    -moz-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
+    -webkit-transition-delay: .2s;
+    -moz-transition-delay: .2s;
+    -o-transition-delay: .2s;
+    transition-delay: .2s;
+}
+
+/* 
+  We hide :before pseudo-element on :active
+*/
+
+.playButton:active:before {
+    -webkit-transform: translate(-150%,0);
+    -moz-transform: translate(-150%,0);
+    -ms-transform: translate(-150%,0);
+    -o-transform: translate(-150%,0);
+    transform: translate(-150%,0);
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
 }
 
 /* END MODAL */
@@ -234,12 +355,13 @@ button:hover{
 /* FOOTER */
 
 footer{
-    position: relative;
+    position: absolute;
     text-align: center;
     width: 100%;
     font-size: 15px;
-    padding-top: 10%;
     letter-spacing: 1px;
+    padding-top: 4vh;
+    bottom: 100px;
 }
 
 footer a {

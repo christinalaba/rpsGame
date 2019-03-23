@@ -116,11 +116,11 @@ function resultOfRound (){
 function checkForWin() {
     let userMessage;
     if (app.userScore === 3) {
-        userMessage = `<p>${app.playerName} Wins! You should ${app.fate}</p>`
+        userMessage = `<p>You win! You should ${app.fate}</p>`
         console.log("game over - user win");
         endGame();
     } else if (app.fateScore === 3) {
-        userMessage = `<p>Fate has decided. Do not ${app.fate}</p>`
+        userMessage = `<p>You lose! Do not ${app.fate}</p>`
         console.log("game over - fate win");
         endGame();
     }
