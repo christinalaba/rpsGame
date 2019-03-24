@@ -13,20 +13,20 @@ const app = {
 app.init = function(){
     console.log("init")
     console.log(app.playerName) 
-    getPlayerName();
+    getPlayerInfo();
 }
 
-function getPlayerName(){
-    console.log("getPlayerName")
+function getPlayerInfo(){
+    console.log("getPlayerInfo")
 
     TweenMax.set([".gameAnimation", ".gameControls", messageBoard], { autoAlpha: 0});
     TweenMax.set(".introModal", { autoAlpha: 1 });
     
     $("#playerInputForm").on("submit", function(e){
         e.preventDefault();
-        app.playerName = $('#nameInput').val();
+        // app.playerName = $('#nameInput').val();
         app.fate = $('#fateInput').val();
-        console.log (app.playerName, app.fate );
+        console.log (app.fate );
         setGameScreen();
     });
 }
@@ -35,6 +35,7 @@ function setGameScreen(){
     TweenMax.set("#rightHand", { x: 300, rotation: 30, });
     TweenMax.set("#leftHand", { x: -300, rotation: -30 });
     TweenMax.set(".gameControls", { autoAlpha: 0, clip: "0px 0px 300px 0px" });
+    TweenMax.set([ messageBoard], { autoAlpha: 0, scale:0 });
 
     TweenMax.to([".introModal", ".pageTitle"],0.5, { autoAlpha: 0, display:"none" });
     
@@ -66,6 +67,8 @@ function getRandomChoice() {
 
 function compare(){
     console.log ('Compare')
+    let winOrLose;
+
     if (app.userChoice === 'Rock' && app.randomChoice === 'Scissors' ||
         app.userChoice === 'Paper' && app.randomChoice === 'Rock' ||
         app.userChoice === 'Scissors' && app.randomChoice === 'Paper') {
@@ -73,7 +76,8 @@ function compare(){
         app.userScore++;
         app.userRound = "Win";
         app.fateRound = "Lose";
-       
+        winOrLose = `<p>Winner!</p>`
+    
     } else if (app.userChoice === 'Paper' && app.randomChoice === 'Scissors' ||
         app.userChoice === 'Scissors' && app.randomChoice === 'Rock' ||
         app.userChoice === 'Rock' && app.randomChoice === 'Paper') {
@@ -81,13 +85,15 @@ function compare(){
         app.fateScore++;
         app.userRound = "Lose";
         app.fateRound = "Win";
+        winOrLose = `<p>You lose</p>`
     } else if (app.userChoice === app.randomChoice) {
         console.log("draw");
         app.userRound = "Win";
         app.fateRound = "Win";
+        winOrLose = `<p>Draw</p>`
     }
-    // console.log(app.userScore);
-    // console.log(app.fateScore);
+   
+    $('#messageBoard').empty().append(winOrLose);
 }
 
 function gameStartAnimation(){
@@ -110,6 +116,9 @@ function resultOfRound (){
     
     $('#rightHand').css('background', `no-repeat url(images/right/Right${app.randomChoice}Win.png)`)
     $('#rightHand').css('background-size', `contain`)
+
+    TweenMax.fromTo(messageBoard, 0.5, { scale: 0}, { autoAlpha: 1, scale: 1, ease: Back.easeOut.config(1.7) });
+
     TweenMax.delayedCall(1, roundWinnerAnimation);
 }
 
@@ -131,27 +140,25 @@ function checkForWin() {
     $('.gameOverModal').append(userMessage);
    
     TweenMax.to(".gameControls", 0.5, { autoAlpha: 0.95, clip: "0px 600px 300px 0px" });
+    TweenMax.fromTo(messageBoard, 0.5, { scale: 1 }, { autoAlpha: 0, scale: 0, ease: Back.easeOut.config(1.7) });
 }
 
 function roundWinnerAnimation(){
     console.log("round winner animation")
+
     if (app.userRound === "Lose"){
-        // console.log(app.userRound)
-        // console.log(app.fateRound)
         $('#leftHand').css('background', `no-repeat url(images/left/Left${app.userChoice}${app.userRound}.png)`)
         $('#leftHand').css('background-size', `contain`)
 
         TweenMax.to('#leftHand', 1, { delay:0.3, x: -50 })
         TweenMax.to('#rightHand', 1, { x: -140 })
     } else if (app.fateRound === "Lose"){
-        // console.log(app.userRound)
-        // console.log(app.fateRound)
         $('#rightHand').css('background', `no-repeat url(images/right/Right${app.randomChoice}${app.fateRound}.png)`)
         $('#rightHand').css('background-size', `contain`)
         TweenMax.to('#rightHand', 1, { delay: 0.3,x: 50 })
         TweenMax.to('#leftHand', 1, { x: 140 })
     }
- 
+    
     TweenMax.delayedCall(1, checkForWin);
 }
 

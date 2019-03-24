@@ -1,14 +1,11 @@
-/* font-family: 'Inconsolata', monospace; */
-/* font-family: 'Hind', sans-serif; */
-
 @font-face {
   font-family: 'tropical';
   src: url('./fonts/Tropical.ttf');
 }
 
 @font-face {
-  font-family: 'shady';
-  src: url('./fonts/Shady_Lane.ttf') format("ttf");
+  font-family: 'MarkerBrush';
+  src: url('./fonts/MarkerBrush.ttf');
 }
 
 * {
@@ -45,7 +42,7 @@ body{
     margin: 0 auto;
 }
 
-.math{
+h1 span{
     color: #fd81a5
 }
 
@@ -78,6 +75,12 @@ h1{
 .fateDisplay p, .playerDisplay p{
     text-align: center;
     margin:5px;
+  
+}
+
+
+.fateScore, .playerScore{
+  font-family: 'MarkerBrush', sans-serif;
 }
 
 .vs{
@@ -90,10 +93,6 @@ h1{
    align-content: center;
    justify-content: space-evenly;
    font-size: 50px;
-}
-
-input:-internal-autofill-previewed, input:-internal-autofill-selected, textarea:-internal-autofill-previewed, textarea:-internal-autofill-selected, select:-internal-autofill-previewed, select:-internal-autofill-selected {
-    background-color: none !important;
 }
 
 /* GAME CONTROLS */
@@ -179,8 +178,7 @@ button:hover{
 
 .input{
     margin:7% 0;
-    font-family: "helvetica", sans-serif;
-    font-size: 20px;
+    font-size: 39px;
     line-height: 28px;
     color: black;
 }
@@ -191,14 +189,15 @@ button:hover{
     font-size: 40px;
 }
 
-#nameInput, #fateInput{
+#fateInput{
     border: none;
     background-color: transparent;
     background-color: transparent;
     color: darkslateblue;
     border-bottom: 3px dotted black;
-    font-size: 20px;
+    font-size: 39px;
     width: 150px;
+    font-family: 'tropical', sans-serif;
 }
 
 #fateInput label{
@@ -222,111 +221,18 @@ button:hover{
     position: relative;
     overflow: hidden;
     width: 160px;
+    height: 50px;
 }
 
 .playButton:hover{
        background-color: #fd81a5;
+        border: 3px solid #fd81a5;
         /* background-color: transparent; */
        /* transition: all 0.5s ease-out; */
        color: darkslateblue;
 }
 
-.playButton span {
-    -webkit-transition: 0.s;
-    -moz-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
-    -webkit-transition-delay: 0.2s;
-    -moz-transition-delay: 0.2s;
-    -o-transition-delay: 0.2s;
-    transition-delay: 0.2s;
-}
 
-.playButton:before,
-.playButton:after {
-    content: '';
-    position: absolute;
-    top: 0.67em;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    opacity: 0;
-    -webkit-transition: .4s,opacity .6s;
-    -moz-transition: .4s,opacity .6s;
-    -o-transition: .4s,opacity .6s;
-    transition: .4s,opacity .6s;
-}
-
-/* :before */
-
-.playButton:before {
-    content: attr(data-hover);
-    -webkit-transform: translate(-150%,0);
-    -moz-transform: translate(-150%,0);
-    -ms-transform: translate(-150%,0);
-    -o-transform: translate(-150%,0);
-    transform: translate(-150%,0);
-    color: darkslateblue;
-}
-
-/* :after */
-
-.playButton:after {
-    content: attr(data-active);
-    -webkit-transform: translate(150%,0);
-    -moz-transform: translate(150%,0);
-    -ms-transform: translate(150%,0);
-    -o-transform: translate(150%,0);
-    transform: translate(150%,0);
-    /* color: darkslateblue; */
-}
-
-/* Span on :hover and :active */
-
-.playButton:hover span,
-.playButton:active span {
-    opacity: 0;
-    -webkit-transform: scale(0.3);
-    -moz-transform: scale(0.3);
-    -ms-transform: scale(0.3);
-    -o-transform: scale(0.3);
-    transform: scale(0.3);
-}
-
-/*  
-    We show :before pseudo-element on :hover 
-    and :after pseudo-element on :active 
-*/
-
-.playButton:hover:before,
-.playButton:active:after {
-    opacity: 1;
-    -webkit-transform: translate(0,0);
-    -moz-transform: translate(0,0);
-    -ms-transform: translate(0,0);
-    -o-transform: translate(0,0);
-    transform: translate(0,0);
-    -webkit-transition-delay: .2s;
-    -moz-transition-delay: .2s;
-    -o-transition-delay: .2s;
-    transition-delay: .2s;
-}
-
-/* 
-  We hide :before pseudo-element on :active
-*/
-
-.playButton:active:before {
-    -webkit-transform: translate(-150%,0);
-    -moz-transform: translate(-150%,0);
-    -ms-transform: translate(-150%,0);
-    -o-transform: translate(-150%,0);
-    transform: translate(-150%,0);
-    -webkit-transition-delay: 0s;
-    -moz-transition-delay: 0s;
-    -o-transition-delay: 0s;
-    transition-delay: 0s;
-}
 
 /* END MODAL */
 
@@ -342,14 +248,15 @@ button:hover{
     width: 100%;
 }
 
-#messageBoard{
+#messageBoard p{
     text-align: center;
-    color: red;
-    font-size: 22px;
+    color: #f27897;
+    font-size: 61px;
     z-index: 2;
     position: absolute;
     width: 100%;
-    top: 5%;
+    top: 0;
+    margin: 0;
 }
 
 /* FOOTER */
@@ -366,4 +273,19 @@ footer{
 
 footer a {
     text-decoration: none;
+}
+
+#buttonAnimation:after {
+    content: "";
+    animation: buttonChange 4s linear infinite;
+    bottom: -5px;
+    position: relative;
+}
+@keyframes buttonChange {
+  0% { 
+      content:"Best of 3"; 
+    }
+  100% { 
+      content: "Let's play!"; 
+    }
 }

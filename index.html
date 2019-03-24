@@ -7,17 +7,13 @@
     <title>Play with Fate</title>
     
     <link rel='stylesheet' type='text/css' href='style.css'>
-    <link href="https://fonts.googleapis.com/css?family=Hind:700|Inconsolata:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
 
 </head>
 
 <body>
     <div class="wrapper">
-        <h1 class="pageTitle">Play Rock, paper, Scissors<br> against <span class="math">math</span>.random</h1>
+        <h1 class="pageTitle">Play Rock, paper, Scissors<br> against <span>math</span>.random</h1>
         
             <div class="main">
                 <div class="scoreBoard">
@@ -35,22 +31,20 @@
                 </div><!-- ./scoreBoard -->
                 
                 <div class="gameScreen">
-                    <p id="messageBoard">Click to select</p>
+                    <div id="messageBoard">
+                       
+                    </div>
                     <div class="gameOverModal hide"></div>
                     <div class="introModal">
                         <form method="get" id="playerInputForm" autocomplete="off">
-                            <!-- <div class="nameInput input">
-                                <label for="name">Your name:</label>
-                                <input type="text" name="nameInput" id="nameInput" required>
-                            </div> -->
                             <div class="fateInput input">
-                                <label for="email">Tell me what you're trying to decide.</br>Should I</label>
+                                <label for="email">What are you trying to decide.</br>Should I</label>
                                 <input type="text" name="fateInput" id="fateInput" required>
                                 <!-- <p>Best of 3</p> -->
                             </div>
                             <div class="playerInput input">
                                 <!-- <input class="playButton" type="submit" value="Best of 3"> -->
-                                <button class="playButton" type="submit" data-hover="Lets play!"><span>Best of 3</span></button>
+                                <button class="playButton" type="submit" data-hover="Lets play!"><span id="buttonAnimation"></span></p></button>
                             </div>
                         </form>
                     </div>
