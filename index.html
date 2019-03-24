@@ -31,23 +31,21 @@
                 </div><!-- ./scoreBoard -->
                 
                 <div class="gameScreen">
-                    <div id="messageBoard">
-                       
-                    </div>
+                    <div id="messageBoard">  
+                    </div><!-- ./messageBoard -->
                     <div class="gameOverModal hide"></div>
                     <div class="introModal">
                         <form method="get" id="playerInputForm" autocomplete="off">
                             <div class="fateInput input">
-                                <label for="email">What are you trying to decide.</br>Should I</label>
+                                <label for="email">What are you trying to decide?</br>Should I</label>
                                 <input type="text" name="fateInput" id="fateInput" required>
                                 <!-- <p>Best of 3</p> -->
                             </div>
                             <div class="playerInput input">
-                                <!-- <input class="playButton" type="submit" value="Best of 3"> -->
-                                <button class="playButton" type="submit" data-hover="Lets play!"><span id="buttonAnimation"></span></p></button>
+                                <button class="playButton" type="submit"></button>
                             </div>
                         </form>
-                    </div>
+                    </div><!-- ./introModal -->
                     <div class="gameControls">
                         <button class="rockButton">Rock</button>
                         <button class="paperButton">Paper</button>
@@ -56,7 +54,9 @@
                     <div class="gameAnimation">
                         <div class="animation" id="leftHand"></div>
                         <div class="animation" id="rightHand" ></div>
-                    </div>
+                    </div><!-- ./gameAnimations -->
+
+
                 </div><!-- ./gameScreen -->
             </div>
 

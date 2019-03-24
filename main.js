@@ -162,12 +162,28 @@ function roundWinnerAnimation(){
     TweenMax.delayedCall(1, checkForWin);
 }
 
+var words = ["Best of 3", "Let's Play!"];
+var playButton = document.querySelector(".playButton");
+var counter = 0;
+var arrayLength = words.length - 1;
+
+function changeWord() {
+    if (counter == arrayLength) {
+        counter = 0;
+    }
+    else {
+        counter++;
+    }
+    playButton.innerHTML = words[counter];
+    setTimeout(changeWord, 2000);
+}
+setTimeout(changeWord), 500;
+
 function endGame() {
     console.log("GAME OVER")
     $('.gameControls').toggleClass('hide');
     $('.gameAnimation').addClass('hide');
     $('.gameOverModal').toggleClass('hide');
- 
 }
 
 $(function () {

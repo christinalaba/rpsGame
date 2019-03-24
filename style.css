@@ -10,6 +10,11 @@
 
 * {
     box-sizing: border-box;
+    
+}
+
+*:focus {
+    outline: none;
 }
 
 .clearfix:after {
@@ -27,11 +32,8 @@ body{
     margin: 0 auto;
     color: darkslateblue;
     background-image: url(./images/speckledWall.jpg);
-    /* background-color: #d47337; */
-    /* background-color: #dc8271; */
-    /* background-color: #acd6bc; */
     background-size: cover;
-    font-family: 'tropical', sans-serif;
+    font-family: 'tropical', 'MarkerBrush', 'helvetica', sans-serif;
 }
 
 .wrapper{
@@ -43,7 +45,7 @@ body{
 }
 
 h1 span{
-    color: #fd81a5
+    color: #fd81a5;
 }
 
 h1{
@@ -162,6 +164,7 @@ button:hover{
     left: 0;
     bottom: 0;
     background: no-repeat url(images/left/LeftRockWin.png);
+    background-size: contain;
     width: 300px;
     height: 300px;
 }
@@ -170,6 +173,7 @@ button:hover{
     right: 0;
     bottom: 0;
     background: no-repeat url(images/right/RightRockWin.png);
+    background-size: contain;
     width: 300px;
     height: 300px;
 }
@@ -206,33 +210,28 @@ button:hover{
 }
 
 .playButton{
-    border-radius: 0px;
     padding: 10px 20px;
     text-transform: uppercase;
     cursor: pointer;
-    background-color: transparent;
-    color: white;
-    background-color: darkslateblue;
-    font-weight: bold;
+    color: darkslateblue;
+    background-color: #fd81a5;
     letter-spacing: 0.8px;
     font-size: 13PX;
+    font-weight: bold;
     border-radius: 5px;
-    border: 3px solid darkslateblue;
+    border: 3px solid #fd81a5;;
     position: relative;
     overflow: hidden;
     width: 160px;
     height: 50px;
 }
 
-.playButton:hover{
-       background-color: #fd81a5;
-        border: 3px solid #fd81a5;
-        /* background-color: transparent; */
-       /* transition: all 0.5s ease-out; */
-       color: darkslateblue;
+.playButton:hover, .playButton:focus{
+    background-color: darkslateblue;
+    border: 3px solid darkslateblue;
+    /* color: darkslateblue; */
+    color: white;
 }
-
-
 
 /* END MODAL */
 
@@ -244,7 +243,7 @@ button:hover{
 .gameOverModal{
     text-align: center;
     padding: 20px;
-    font-size: 38px;
+    font-size: 68px;
     width: 100%;
 }
 
@@ -275,17 +274,75 @@ footer a {
     text-decoration: none;
 }
 
-#buttonAnimation:after {
-    content: "";
-    animation: buttonChange 4s linear infinite;
-    bottom: -5px;
-    position: relative;
-}
-@keyframes buttonChange {
-  0% { 
-      content:"Best of 3"; 
+@media screen and (max-width: 414px) {
+  #rightHand {
+    top: -50px;
+  }
+
+   #leftHand {
+    top: 140px;
+  }
+
+  .gameControls{
+    margin-top: 125px;
+  }
+
+  #messageBoard{
+    top:-50px;
+    position: absolute;
+    width: 100%;
+  }
+
+  h1{
+    margin-bottom: 0;
+    font-size: 50px;
+  }
+
+  footer{
+    bottom: 100px;
     }
-  100% { 
-      content: "Let's play!"; 
+
+    .selected {
+        background-color: transparent !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+   
+    #rightHand, #leftHand{
+        width: 200px;
+        height: 200px;
+    }
+
+    #leftHand {
+        top: 110px;
+    }
+
+    .gameControls{
+        margin-top: 85px;
+    }
+
+    #messageBoard{
+        top: 101px;
+    }
+
+    h1{
+        margin: 5vh;
+        font-size: 40px;
+    }
+
+    .input{
+        font-size: 28px;
+    }
+
+    .display{
+        font-size: 40px;
+    }
+
+    footer {
+        bottom: 50px;
+    }
+    #PlayerInputForm{
+        padding: 2% 10%;
     }
 }
